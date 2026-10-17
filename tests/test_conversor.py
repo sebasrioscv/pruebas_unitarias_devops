@@ -1,4 +1,5 @@
 import pytest
+from src import conversor
 from src.conversor import (
     celsius_a_fahrenheit,
     fahrenheit_a_celsius,
@@ -68,3 +69,49 @@ def test_un_kilometro_a_millas():
 
     # Assert
     assert resultado == pytest.approx(1 / 1.60934)
+
+# Arrange: preparamos datos. Act: convertimos. Assert: comprobamos el resultado.
+@pytest.mark.parametrize("funcion, entrada, esperado", [
+    (conversor.celsius_a_kelvin, 0, 273.15),
+    (conversor.kelvin_a_celsius, 273.15, 0),
+    (conversor.kilometros_a_metros, 2, 2000),
+    (conversor.libras_a_kilogramos, 10, 4.53592),
+    (conversor.kilogramos_a_libras, 1, 1 / 0.453592),
+    (conversor.galones_a_litros, 1, 3.78541),
+    (conversor.litros_a_galones, 3.78541, 1),
+    (conversor.millas_a_kilometros, 1, 1.60934),
+    (conversor.pies_a_metros, 1, 0.3048),
+    (conversor.metros_a_pies, 0.3048, 1),
+    (conversor.onzas_a_gramos, 1, 28.3495),
+    (conversor.gramos_a_onzas, 28.3495, 1),
+])
+
+def test_conversiones_adicionales(funcion, entrada, esperado):
+    # Arrange
+    # Los datos de entrada y el resultado esperado vienen parametrizados.
+
+    # Act
+    resultado = funcion(entrada)
+
+    # Assert
+    assert resultado == pytest.approx(esperado)
+
+@pytest.mark.parametrize("funcion", [
+    conversor.kilometros_a_metros,
+    conversor.libras_a_kilogramos,
+    conversor.kilogramos_a_libras,
+    conversor.galones_a_litros,
+    conversor.litros_a_galones,
+    conversor.millas_a_kilometros,
+    conversor.pies_a_metros,
+    conversor.metros_a_pies,
+    conversor.onzas_a_gramos,
+    conversor.gramos_a_onzas,
+])
+def test_conversiones_rechazan_valores_negativos(funcion):
+    # Arrange
+    entrada = -1
+
+    # Act y Assert
+    with pytest.raises(ValueError):
+        funcion(entrada)
