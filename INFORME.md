@@ -3,6 +3,8 @@
 ## 1\. Datos
 
 * **Estudiante:** Juan Sebastian Rios Chalarca
+* **Fecha:** 17/10/2026
+* **Grupo:** DevOps grupo 1
 * **Repositorio:** https://github.com/sebasrioscv/pruebas\_unitarias\_devops
 
 ## 2\. Objetivo
@@ -83,7 +85,7 @@ Los módulos trabajados superan la meta del 85 % indicada en el taller: `calcula
 
 La cobertura indica cuánto código fue ejecutado durante las pruebas, pero no demuestra por sí sola que el código esté libre de errores. También es importante elegir casos representativos, comprobar resultados esperados y probar entradas límite.
 
-**Cantidad de pruebas esperada tras la ampliación:** 77 casos, contando individualmente los escenarios parametrizados. Confirma la cifra ejecutando `pytest tests/ -v` antes de entregar y ajusta este dato si la salida final muestra otro total.
+Se ejecutaron 77 casos, contando individualmente los escenarios parametrizados. Confirma la cifra ejecutando `pytest tests/ -v` antes de entregar y ajusta este dato si la salida final muestra otro total.
 
 ## 6\. Reflexión final
 
